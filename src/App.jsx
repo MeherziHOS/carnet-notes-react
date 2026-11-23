@@ -1,18 +1,14 @@
-function App() {
-    const appName = 'Mon carnet de notes';
+import Header from './components/Header';
+import NoteList from './components/NoteList';
 
+function App() {
     return (
         <div className="app">
-            <header>
-                <h1>{appName}</h1>
-                <p>Une application créée avec React</p>
-            </header>
-
+            <Header />
             <main>
-                <p>Aucune note pour l'instant.</p>
+                <NoteList />
             </main>
         </div>
     );
 }
-
 export default App;
