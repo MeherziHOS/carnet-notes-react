@@ -1,8 +1,8 @@
-function Header() {
+function Header({ title, subtitle = 'Organisez vos idées avec React ' }) {
     return (
         <header>
-            <h1> Mon carnet de notes </h1>
-            <p> Organisez vos idées avec React</p>
+            <h1> {title} </h1>
+            <p> {subtitle}</p>
         </header>
     );
 }
