@@ -1,5 +1,6 @@
 // src/App.jsx
 // Composant racine : il détient les données et les transmet par les props
+import { useState } from 'react';
 import Header from './components/Header.jsx';
 import NoteList from './components/NoteList.jsx';
 
@@ -32,14 +33,32 @@ const INITIAL_NOTES = [
 ];
 
 function App() {
+    const [notes, setNotes] = useState(INITIAL_NOTES);
+
+    function handleAddSample() {
+        const nouvelleNote = {
+            id: Date.now(),
+            title: " Note d'exemple",
+            content: "C'est une nouvelle note d'example",
+            category: 'Personnel',
+            date: new Date().toISOString(),
+            important: false,
+        };
+        setNotes((prevNotes) => [nouvelleNote, ...prevNotes]);
+    }
     return (
         <div className="app">
             <Header title="Mon carnet de notes" />
             <main>
-                <NoteList notes={INITIAL_NOTES} />
+                <p>
+                    Il y a {notes.length} {notes.length === 1 ? 'note' : 'notes'} dans mon carnet
+                </p>
+                <button type="button" onClick={handleAddSample}>
+                    Ajouter une nouvelle note d'example{' '}
+                </button>
+                <NoteList notes={notes} />
             </main>
         </div>
     );
 }
-
 export default App;
