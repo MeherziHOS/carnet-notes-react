@@ -69,3 +69,14 @@
     border-radius: 8px;
     padding: 0.5rem 0.75rem;
 }
+.counter {
+    align-self: flex-start;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    margin: 0;
+}
+.date {
+    color: #475569;
+    font-size: 0.85rem;
+}

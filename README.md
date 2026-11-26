@@ -1,16 +1,71 @@
-# React + Vite
+# Mon carnet de notes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projet réalisé dans le cadre de ma formation Conceptrice développeuse d'Applications à l'AFPA.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Application de gestion de notes développée avec React et Vite.
 
-## React Compiler
+## Fonctionnalités
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Ajouter une note
+- Choisir une catégorie
+- Supprimer une note
+- Marquer une note comme importante
+- Afficher la date de création
+- Compter les notes et les notes importantes
+- Valider les champs du formulaire
+- Interface responsive et accessible
 
-## Expanding the ESLint configuration
+Les notes sont conservées en mémoire pendant la session.
+Elles sont réinitialisées au rechargement de la page.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies
+
+- React
+- JavaScript / JSX
+- Vite
+- CSS Modules
+- ESLint
+- Prettier
+- Git et GitHub
+
+## Installation et lancement
+
+Prérequis : Node.js 24 et npm 11 ou supérieur.
+
+    npm install
+    npm run dev
+
+## Scripts disponibles
+
+- npm run dev : lancer le serveur de développement
+- npm run build : générer la version de production
+- npm run preview : prévisualiser la version de production
+- npm run lint : vérifier la qualité du code
+- npm run format : formater le code
+- npm run format:check : vérifier le formatage
+
+## Organisation du projet
+
+    src/
+    ├── components/
+    │   ├── Header.jsx
+    │   ├── Header.module.css
+    │   ├── NoteCard.jsx
+    │   ├── NoteCard.module.css
+    │   ├── NoteCounter.jsx
+    │   ├── NoteCounter.module.css
+    │   ├── NoteForm.jsx
+    │   ├── NoteForm.module.css
+    │   ├── NoteList.jsx
+    │   └── NoteList.module.css
+    ├── App.jsx
+    ├── App.module.css
+    ├── index.css
+    └── main.jsx
+
+## Formation
+
+AFPA - CDA
+Jalon 4 - React.js, les fondamentaux

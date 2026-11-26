@@ -1,7 +1,9 @@
 import styles from './NoteCard.module.css';
 
 function NoteCard({ note, onDelete, onToggleImportant }) {
-    const { id, title, content, category, important } = note;
+    const { id, title, content, category, important, date } = note;
+
+    const formattedDate = new Date(date).toLocaleDateString('fr-FR');
 
     const cardClassName = important ? `${styles.card} ${styles.important}` : styles.card;
 
@@ -12,7 +14,12 @@ function NoteCard({ note, onDelete, onToggleImportant }) {
             {important && <p className={styles.badge}>⭐ Importante</p>}
 
             <p className={styles.content}>{content}</p>
+
             <p className={styles.category}>{category}</p>
+
+            <time className={styles.date} dateTime={date}>
+                {formattedDate}
+            </time>
 
             <div className={styles.actions}>
                 <button

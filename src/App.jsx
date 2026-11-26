@@ -3,6 +3,7 @@ import Header from './components/Header.jsx';
 import NoteList from './components/NoteList.jsx';
 import NoteForm from './components/NoteForm.jsx';
 import styles from './App.module.css';
+import NoteCounter from './components/NoteCounter.jsx';
 
 const INITIAL_NOTES = [
     {
@@ -60,18 +61,12 @@ function App() {
         );
     }
 
-    const importantCount = notes.filter((note) => note.important).length;
-
     return (
         <div className={styles.app}>
             <Header title="Mon carnet de notes" />
 
             <main className={styles.main}>
-                <p className={styles.counter}>
-                    {notes.length} {notes.length === 1 ? 'note' : 'notes'}
-                    {' • '}
-                    {importantCount} {importantCount === 1 ? 'importante' : 'importantes'}
-                </p>
+                <NoteCounter notes={notes} />
 
                 <NoteForm onAdd={handleAddNote} />
 
@@ -81,6 +76,10 @@ function App() {
                     onToggleImportant={handleToggleImportant}
                 />
             </main>
+
+            <footer className={styles.footer}>
+                Mon carnet de notes · projet réalisé avec React et Vite
+            </footer>
         </div>
     );
 }
