@@ -1,10 +1,8 @@
-// src/App.jsx
-// Composant racine : il détient les données et les transmet par les props
 import { useState } from 'react';
 import Header from './components/Header.jsx';
 import NoteList from './components/NoteList.jsx';
+import NoteForm from './components/NoteForm.jsx';
 
-// Données de départ : un tableau d'objets, une note par objet
 const INITIAL_NOTES = [
     {
         id: 1,
@@ -35,30 +33,55 @@ const INITIAL_NOTES = [
 function App() {
     const [notes, setNotes] = useState(INITIAL_NOTES);
 
-    function handleAddSample() {
-        const nouvelleNote = {
+    // Ajouter une nouvelle note
+    function handleAddNote(newNote) {
+        const note = {
+            ...newNote,
             id: Date.now(),
-            title: " Note d'exemple",
-            content: "C'est une nouvelle note d'example",
-            category: 'Personnel',
             date: new Date().toISOString(),
             important: false,
         };
-        setNotes((prevNotes) => [nouvelleNote, ...prevNotes]);
+
+        setNotes((prevNotes) => [note, ...prevNotes]);
     }
+
+    // Supprimer une note
+    function handleDelete(id) {
+        setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+    }
+
+    // Modifier le statut important
+    function handleToggleImportant(id) {
+        setNotes((prevNotes) =>
+            prevNotes.map((note) =>
+                note.id === id ? { ...note, important: !note.important } : note,
+            ),
+        );
+    }
+
+    const importantCount = notes.filter((note) => note.important).length;
+
     return (
         <div className="app">
             <Header title="Mon carnet de notes" />
+
             <main>
                 <p>
-                    Il y a {notes.length} {notes.length === 1 ? 'note' : 'notes'} dans mon carnet
+                    {notes.length} {notes.length === 1 ? 'note' : 'notes'}
+                    {' • '}
+                    {importantCount} {importantCount === 1 ? 'importante' : 'importantes'}
                 </p>
-                <button type="button" onClick={handleAddSample}>
-                    Ajouter une nouvelle note d'example{' '}
-                </button>
-                <NoteList notes={notes} />
+
+                <NoteForm onAdd={handleAddNote} />
+
+                <NoteList
+                    notes={notes}
+                    onDelete={handleDelete}
+                    onToggleImportant={handleToggleImportant}
+                />
             </main>
         </div>
     );
 }
+
 export default App;
