@@ -1,31 +1,39 @@
+import styles from './NoteCard.module.css';
+
 function NoteCard({ note, onDelete, onToggleImportant }) {
     const { id, title, content, category, important } = note;
 
+    const cardClassName = important ? `${styles.card} ${styles.important}` : styles.card;
+
     return (
-        <article>
-            <h3>{title}</h3>
+        <article className={cardClassName}>
+            <h3 className={styles.title}>{title}</h3>
 
-            {important && <p>⭐ Importante</p>}
+            {important && <p className={styles.badge}>⭐ Importante</p>}
 
-            <p>{content}</p>
-            <p>{category}</p>
+            <p className={styles.content}>{content}</p>
+            <p className={styles.category}>{category}</p>
 
-            <button
-                type="button"
-                onClick={() => onToggleImportant(id)}
-                aria-label={`Marquer « ${title} » comme importante`}
-                aria-pressed={important}
-            >
-                {important ? '★' : '☆'}
-            </button>
+            <div className={styles.actions}>
+                <button
+                    className={styles.star}
+                    type="button"
+                    onClick={() => onToggleImportant(id)}
+                    aria-label={`Marquer « ${title} » comme importante`}
+                    aria-pressed={important}
+                >
+                    {important ? '★' : '☆'}
+                </button>
 
-            <button
-                type="button"
-                onClick={() => onDelete(id)}
-                aria-label={`Supprimer la note « ${title} »`}
-            >
-                Supprimer
-            </button>
+                <button
+                    className={styles.delete}
+                    type="button"
+                    onClick={() => onDelete(id)}
+                    aria-label={`Supprimer la note « ${title} »`}
+                >
+                    Supprimer
+                </button>
+            </div>
         </article>
     );
 }

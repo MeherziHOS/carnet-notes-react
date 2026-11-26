@@ -1,22 +1,29 @@
 import NoteCard from './NoteCard.jsx';
+import styles from './NoteList.module.css';
 
 function NoteList({ notes, onDelete, onToggleImportant }) {
     if (notes.length === 0) {
-        return <p>Aucune note pour l'instant. Ajoutez votre première note !</p>;
+        return (
+            <p className={styles.empty}>
+                Aucune note pour l'instant. Ajoutez votre première note !
+            </p>
+        );
     }
 
     return (
         <section>
-            <h2>Mes notes</h2>
+            <h2 className={styles.title}>Mes notes</h2>
 
-            {notes.map((note) => (
-                <NoteCard
-                    key={note.id}
-                    note={note}
-                    onDelete={onDelete}
-                    onToggleImportant={onToggleImportant}
-                />
-            ))}
+            <div className={styles.grid}>
+                {notes.map((note) => (
+                    <NoteCard
+                        key={note.id}
+                        note={note}
+                        onDelete={onDelete}
+                        onToggleImportant={onToggleImportant}
+                    />
+                ))}
+            </div>
         </section>
     );
 }

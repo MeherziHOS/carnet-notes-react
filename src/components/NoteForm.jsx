@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './NoteForm.module.css';
 
 const CATEGORIES = ['Personnel', 'Travail', 'Études', 'Idées'];
 
@@ -29,18 +30,20 @@ function NoteForm({ onAdd }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} noValidate>
-            <h2>Ajouter une note</h2>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
+            <h2 className={styles.title}>Ajouter une note</h2>
 
-            <p>Les champs marqués d'un astérisque (*) sont obligatoires.</p>
+            <p className={styles.legend}>
+                Les champs marqués d'un astérisque (*) sont obligatoires.
+            </p>
 
             {error && (
-                <p id="note-error" role="alert">
+                <p className={styles.error} id="note-error" role="alert">
                     {error}
                 </p>
             )}
 
-            <div>
+            <div className={styles.field}>
                 <label htmlFor="title">Titre *</label>
                 <input
                     id="title"
@@ -53,7 +56,7 @@ function NoteForm({ onAdd }) {
                 />
             </div>
 
-            <div>
+            <div className={styles.field}>
                 <label htmlFor="content">Contenu *</label>
                 <textarea
                     id="content"
@@ -66,7 +69,7 @@ function NoteForm({ onAdd }) {
                 />
             </div>
 
-            <div>
+            <div className={styles.field}>
                 <label htmlFor="category">Catégorie</label>
                 <select
                     id="category"
@@ -81,7 +84,9 @@ function NoteForm({ onAdd }) {
                 </select>
             </div>
 
-            <button type="submit">Ajouter</button>
+            <button className={styles.submit} type="submit">
+                Ajouter
+            </button>
         </form>
     );
 }

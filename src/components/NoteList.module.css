@@ -1,0 +1,24 @@
+.title {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+}
+
+.empty {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #475569;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 320px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

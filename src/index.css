@@ -1,4 +1,4 @@
-/* Styles globaux du carnet de notes */
+/* Styles globaux */
 *,
 *::before,
 *::after {
@@ -13,8 +13,19 @@ body {
     background-color: #f5f7fb;
 }
 
-.app {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 1rem;
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Accessibilité : navigation au clavier */
+:focus-visible {
+    outline: 3px solid #4338ca;
+    outline-offset: 3px;
 }

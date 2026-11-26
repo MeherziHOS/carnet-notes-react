@@ -1,9 +1,12 @@
-function Header({ title, subtitle = 'Organisez vos idées avec React ' }) {
+import styles from './Header.module.css';
+
+function Header({ title, subtitle = 'Organisez vos idées avec React' }) {
     return (
-        <header>
-            <h1> {title} </h1>
-            <p> {subtitle}</p>
+        <header className={styles.header}>
+            <h1 className={styles.title}>{title}</h1>
+            <p className={styles.subtitle}>{subtitle}</p>
         </header>
     );
 }
+
 export default Header;
