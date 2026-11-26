@@ -35,7 +35,6 @@ const INITIAL_NOTES = [
 function App() {
     const [notes, setNotes] = useState(INITIAL_NOTES);
 
-    // Ajouter une nouvelle note
     function handleAddNote(newNote) {
         const note = {
             ...newNote,
@@ -47,12 +46,10 @@ function App() {
         setNotes((prevNotes) => [note, ...prevNotes]);
     }
 
-    // Supprimer une note
     function handleDelete(id) {
         setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
     }
 
-    // Modifier le statut important
     function handleToggleImportant(id) {
         setNotes((prevNotes) =>
             prevNotes.map((note) =>

@@ -1,4 +1,3 @@
-/* Styles globaux */
 *,
 *::before,
 *::after {
@@ -24,7 +23,6 @@ button {
     cursor: pointer;
 }
 
-/* Accessibilité : navigation au clavier */
 :focus-visible {
     outline: 3px solid #4338ca;
     outline-offset: 3px;
